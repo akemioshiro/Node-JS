@@ -15,9 +15,11 @@ module.exports.noticia = function (application, req, res) {
     // recupera o modulo que faz a conexão com o banco, modularizado com o consign
     var connection = application.config.dbConnection();
     var noticiasModel = new application.app.models.NoticiasDAO(connection);
+    // recupera parametros passados pela url
+    var id_noticia = req.query;
 
-    noticiasModel.getNoticia(function (error, result) {
+    noticiasModel.getNoticia(id_noticia, function (error, result) {
         // aponta qual é a view que irá renderizar e o json
-        res.render("noticias/noticia", { noticias: result });
+        res.render("noticias/noticia", { noticia: result });
     });
 }

@@ -6,6 +6,8 @@ var app = express(); // chamada da função que o modulo retorna
 app.set("view engine", "ejs"); // motor de geração de views
 app.set("views", "./app/views");
 
+// fazendo o mapeamento dos arquivos publicos para a pasta raiz
+app.use(express.static("./app/public"));
 // bodyparser implementado como middleware
 // permite o uso de json como retorno, json sendo transitado na aplicação
 app.use(bodyParser.urlencoded({ extended: true }));
